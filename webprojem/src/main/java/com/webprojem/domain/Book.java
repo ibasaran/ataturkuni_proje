@@ -3,6 +3,7 @@ package com.webprojem.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,10 @@ public class Book {
 	private Long id;
 	private String title;
 	private String isbn;
+	private String picture;
+	
+	@Column(length = 1000)
+	private String description;
 	
 	@ManyToMany
 	@JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name="author_id"))
@@ -58,6 +63,18 @@ public class Book {
 	}
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
